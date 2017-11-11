@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //js是基于对象的语言：
+  //表示，只能够使用js自身提供的数据类型，无法进行自定义数据类型的创建
+  
+  //js也可以通过一些方式进行数据类型的创建
+  //想要创建一种 狗 数据类型
+  //我们说的自定义数据类型实际上就是通过构造函数创建的实例对象
+  
+  //我们发现，js内置的数据类型实际上也是通过构造函数的形式创建的
+  function Array() {
+    this.length = 8;
+    this.pop = function () {};
+    this.push = function () {};
+  }
+  var arr = new Array();
+  
+  
+  //通过构造函数创建一个数据类型：狗
+  //我们自定义的数据类型更多的是对事物的描述
+  function Dog(tuiCount, height) {
+    this.tuiCount = tuiCount;
+    this.height = height
+    this.wangWang = function () {
+      console.log("汪汪汪");
+    }
+    this.eat = function () {
+      console.log("吃骨头和肉还有狗粮，妙鲜包");
+    }
+  }
+  var haShiQi = new Dog();
+
+
+</script>
+
+</body>
+</html>

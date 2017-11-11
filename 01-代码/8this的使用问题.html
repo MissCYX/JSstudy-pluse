@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //this只能在方法中使用才有意义
+  function DongWu(name, sex) {
+    this.name = name;
+    this.sex = sex;
+  }
+  DongWu.prototype.tuiCount = 4;
+  DongWu.prototype.eat = function () {
+    console.log("他喜欢吃食物");
+    console.log(this);
+  };
+  
+  //猫 狗 猪
+  var cat = new DongWu("猫咪", "公");
+  var dog = new DongWu("狗狗", "母");
+  var pig = new DongWu("猪猪", "公");
+  
+  pig.eat();
+
+</script>
+</body>
+</html>

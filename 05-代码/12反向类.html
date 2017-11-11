@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //反向类是对字符类功能的扩展。
+  //反向类的标识:在字符类的中括号内部最开始的位置书写一个 ^ 表示反向
+  
+  
+  //含有除了abc以外的任意字符即可匹配成功
+  var reg = /[^abc]/;
+
+  
+  console.log(reg.test("ojiyigujmhyfth"));//true
+  console.log(reg.test("q"));//true
+  console.log(reg.test("a"));//false
+  console.log(reg.test("ar"));//true
+
+
+</script>
+
+</body>
+</html>

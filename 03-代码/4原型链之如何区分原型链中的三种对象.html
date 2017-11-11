@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //
+  //
+  //通过实例对象的__proto__可以访问到原型对象的这个过程，称为原型链
+  //所以__proto__是原型链的媒介
+  
+  
+  function Create() {
+    this.name = "张三";
+  }
+  Create.prototype.sayHi = function () {
+    console.log("我是sayHi方法");
+  };
+  
+  var c1 = new Create();
+  console.log(c1, "这是一个实例对象c1");
+  
+  c1.__proto__;//这是c1的构造器的原型对象
+  c1.__proto__.__proto__//怀疑这个对象是Object构造函数的原型对象
+  
+  console.log(c1.__proto__.__proto__ == Object.prototype);//true
+  
+  //必须会：
+  //实例对象都有一个属性__proto__
+  //构造函数都有一个属性prototype
+  //原型对象都有一个属性constructor
+  
+  
+  //必须会：
+  //查找规则：当我们使用一个实例对象的属性时，找自身，没有，找实例对象的__proto__实际上就是找了原型对象
+  //原型对象中如果也没有，再找__proto__，一直重复这个过程，最终到Object.prototype,如果再没有，直接报错（终点为null）
+  //具体步骤可以见图例
+  
+  //原型链的访问过程中只存在实例对象和原型对象，所以我们通常也会说，原型链是用来描述实例对象和原型对象关系的一种方式。
+  
+  
+  //console.log(Object.prototype.__proto__);
+  
+  
+  //我们使用的c1的toString实际上按照原型链向上查找，找到Object.prototype中的toString方法
+  //console.log(c1.toString());
+
+
+</script>
+</body>
+</html>

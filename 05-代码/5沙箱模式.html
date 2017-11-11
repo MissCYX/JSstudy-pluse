@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //沙箱：一个沙箱的内部环境与外部的环境是外圈隔绝的
+  //实现方式：自调用函数
+  
+  //(function () {
+  //  //需要在每一个功能块的外面包裹一个自调用函数。
+  //})();
+  
+  
+  //以下为贪食蛇的伪代码
+  (function () {
+    //这是一个沙箱，也可以说是一个闭包
+    
+    //创建一些变量，用于保存内部的每个功能块中的主体构造函数
+    var Food2, Snake2, Game2;
+    
+    (function () {
+      function Food() {
+        console.log("这是食物的构造函数");
+      }
+      
+      //暴露：这个功能不要直接保留给window，而是暴露给贪食蛇主体的自调用函数中的变量
+      Food2 = Food;
+    })();
+    (function () {
+      function Snake() {
+        console.log("这是小蛇的构造函数");
+      }
+      
+      Snake2 = Snake;
+      
+    })();
+    (function () {
+      function Game() {
+        console.log("这是游戏的构造函数");
+      }
+      
+      Game2 = Game;
+    })();
+    
+  })();
+  
+  //定时器的参数使用
+  var fn = function () {
+    console.log("我执行了");
+  }
+  //将定时器中的参数1进行命名保存，可以提升效率
+  setInterval(fn,200);
+  
+  
+  
+
+</script>
+</body>
+</html>

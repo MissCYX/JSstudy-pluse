@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //对象是复杂数据类型，所有在进行拷贝时，通过直接赋值的方式无法达到真正的复制效果
+  var obj = {
+    name: "张三",
+    age: 18,
+    sex: "女",
+    scores: {
+      yuWen: 200,
+      math: 200,
+      yingYu: 200
+    }
+  };
+  var obj2 = {};
+  
+  //obj表示被拷贝的那个对象，obj2表示拷贝到的那个对象
+  function shenKaoBei(obj, obj2) {
+    //遍历需要拷贝的那个对象obj
+    for (var k in obj) {
+      //将obj中的每个属性设置给obj2中的对应属性
+      //需要考虑，如果obj[k]的值是一个复杂数据类型，无法通过赋值的方式进行拷贝
+      //检测obj[k]的类型，如果是基本数据类型，直接采用赋值的方式即可
+      
+      if (typeof obj[k] != "object") {
+        //基本数据类型属性的复制
+        obj2[k] = obj[k];
+      } else {
+        //复杂数据类型属性的复制
+        //检测到obj[k]是一个对象后，obj2[k]也设置上对应的属性
+        //想要设置属性，obj2[k]先需要是一个对象才可以
+        obj2[k] = {};
+        //说明肯定是一个对象形式的属性值
+        shenKaoBei(obj[k], obj2[k]);
+      }
+    }
+  }
+  
+  shenKaoBei(obj, obj2);
+  
+  console.log(obj);
+  console.log(obj2);
+  
+  obj.scores.yuWen = 10000;
+  console.log(obj.scores.yuWen);
+  console.log(obj2.scores.yuWen);
+
+
+</script>
+
+</body>
+</html>

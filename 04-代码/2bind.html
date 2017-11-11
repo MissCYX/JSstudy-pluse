@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //bind方法
+  //函数名.bind();  不会直接进行调用函数，可以更改函数内的this指向，并且返回副本
+  //原函数不会修改。
+  
+  //var fun = function (a, b, c, d) {
+  //  console.log(a, b, c, d, this);
+  //};
+  //fun(1, 2);
+  
+  //接收bind返回的函数
+  //var fun2 = fun.bind({name: "张三"}, 100, 200, 300);
+  
+  //  fun(1, 2);//原函数没有修改
+  //  fun2(1, 2);
+  
+  //使用bind方法设置的this指向，无法再次进行修改。
+  //使用call尝试修改fun2的this指向，失败
+  //fun2.call({age:18},1,2);
+  
+  //bind参数1以后的其他参数用于设定，函数fun2的默认参数值，如果在调用时再次传入参数，会向后设置
+  //除参数1以外，剩余的参数不常使用
+  
+  
+  //问题：兼容性问题 ie9以下不支持，官方文档中提供了解决的方式
+  
+  //常用的使用场景：
+  //bind方法和call与apply不同，bind在设置this是不会进行调用
+  //如果我们希望修改一个函数中的this指向，并且无法立刻执行，可以使用bind，例如定时器中函数的this指向修改。
+  
+  //假装是定时器功能，fn为需要执行的代码，time不用管
+  function setInterval1(fn, time) {
+    console.log(fn);
+    //fn是用户需要间隔一段时间执行的代码，在内部进行调用
+    fn();
+  }
+  
+  //使用时对比，使用bind和使用call更改this指向时的区别。
+  setInterval1(function () {
+    console.log("我能执行", this);
+  }.call({name: "张三"}));
+  
+  setInterval1(function () {
+    console.log("我能执行", this);
+  }.bind({name: "张三"}));
+  
+  //由于call会在更改this指向的同时立刻执行，导致传入的fn值为undefined，所以对于定时器的this修改操作使用bind更合理
+
+
+</script>
+</body>
+</html>

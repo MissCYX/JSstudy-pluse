@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //match也是字符串的方法
+  //用于对字符串中匹配到的内容进行提取
+  //字符串.match(正则)
+  
+  var str = "小明：昨天我得女朋友说想看这个电影，终于找到了，么么哒，我得邮箱是xiaoming@qq.com小红：昨天我跟我老公说我想看这个电影，为了给他一个惊喜，我想先找到，谢谢你，我得邮箱是xiaohong@sina.com韩梅梅：我得同桌想看，我帮他找，好人一生平安，邮箱是lilei@163.com我:wuyou@hotmail.com";
+  //从str中将所有的邮箱提取出来
+  //如果书写没有匹配模式的正则，只会返回第一次找到的内容的详细信息
+  //如果书写了匹配模式g，就会返回所有匹配到的内容，但是不含详细信息（实际上详细信息没什么用）
+  //console.log(str.match(/\w+@\w+\.\w+/g));
+  
+  
+  //正则中也有一个方法用于对字符串进行提取操作
+  //正则.exec(字符串);
+  
+  //exec方法的使用方式与以前使用的其他方法均略有不同
+  //当我们使用同一个正则对一个字符串进行多次检索操作时，每一次会返回新一个匹配的内容以及所有的详细信息
+  //如果匹配结束，还进行调用，返回null
+  
+  var reg = /\w+@\w+\.\w+/g;//切记先保存一次再进行多次调用
+  //console.log(reg.exec(str));
+  //console.log(reg.exec(str));
+  //console.log(reg.exec(str));
+  //console.log(reg.exec(str));
+  //console.log(reg.exec(str));//null
+  
+  
+  var resultArr;
+  //条件中进行了一个赋值操作，目的是为了接受本次提取到的结果
+  //保存的同时，赋值操作具有返回值，就是本次匹配到的内容，如果结果为null，循环自动结束
+  while (resultArr = reg.exec(str)) {
+    console.log("每个人的邮箱是:" + resultArr[0]);
+  }
+  
+  console.log(num = 100);
+
+
+</script>
+
+</body>
+</html>

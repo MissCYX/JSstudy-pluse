@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //斐波那契数列：就是一个有规律的数列，除了前两个数以外，后面的每个数是前两个数的和
+  //1 1 2 3 5 8 13 21 34 55
+  
+  //第12个数是144
+  
+  //使用递归完成：计算出数列中第n个数的值
+  var count = 0;
+  function getFb(n) {
+    count++;
+    //想要计算第5个数
+    //              return getFb(4) + getFb(3);
+    //return getFb(3) + getFb(2)      return getFb(2) + getFb(1);
+    
+    //getFb(2)  的值应当为1   getFb(1)的值应当为1；
+    
+    //设置结束条件
+    if (n == 2 || n == 1) {//如果n为2或者1，都返回1
+      return 1;
+    }
+    //根据规律设置代码
+    return getFb(n - 1) + getFb(n - 2);
+  }
+  console.log(getFb(40),count);
+
+  //我们在书写时，发现，功能设置起来比較简单，但是执行过程中出现了许多次的函数调用，导致执行的效率很低。
+  //计算第40个数，需要调用2亿次函数。
+  
+  //递归第二个问题，如果代码书写不得当，会导致执行效率很低。
+
+</script>
+</body>
+</html>

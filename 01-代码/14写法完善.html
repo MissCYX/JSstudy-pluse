@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 200px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<button id="btn">按钮</button>
+<div id="box"></div>
+
+<script>
+  
+  function id(idName) {
+    return document.getElementById(idName);
+  }
+  //通过一个对象，对某个标签进行某些样式修改操作
+  function Change(btnObj, divObj, datasObj) {
+    //设置属性，保存需要使用的所有数据
+    this.btnObj = btnObj;//操作的元素
+    this.divObj = divObj;//被操作的元素
+    this.datasObj = datasObj;//要更改的样式数据
+  }
+  Change.prototype.changeStyle = function () {
+    //给btnObj设置点击事件，更改divObj的一些样式，根据datasObj中的数据进行操作
+    var that = this;
+    this.btnObj.onclick = function () {
+      //先获取到datasObj中的每一组数据，进行依次设置
+      var obj = that.datasObj;//对数据再次进行缓存
+      //遍历obj，对内部的每个样式属性进行设置
+      for (var k in obj) {
+        //k - 属性名 - 要设置的样式名 - 字符串类型
+        //obj[k] - 要设置的对应的样式值
+        that.divObj.style[k] = obj[k];
+      }
+    };
+  };
+  //创建实例对象
+  var c1 = new Change(id("btn"), id("box"), {
+    width: "100px",
+    height: "200px",
+    backgroundColor: "yellow"
+  });
+  c1.changeStyle();//调用方法执行样式修改操作
+
+
+</script>
+</body>
+</html>

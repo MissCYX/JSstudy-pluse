@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //继承
+  //遗产 - 继承的一种形式
+  
+  
+  //康熙 - 父亲
+  //固定资产：江山     会管理国家：管理的非常好，盛世   打仗：天天打胜仗，御驾亲征
+  
+  function KangXi() {
+    this.ziChan = "江山";
+  }
+  KangXi.prototype.age = 1000;
+  KangXi.prototype.manage = function () {
+    console.log("管理的非常好，盛世");
+  };
+  KangXi.prototype.makeWar = function () {
+    console.log("天天打胜仗，御驾亲征");
+  };
+  
+  //var kangXi = new KangXi();
+  //console.log(kangXi.ziChan)
+  //kangXi.manage();
+  //kangXi.makeWar();
+  
+  
+  //康熙驾崩了，宣召让雍正继位（继承了康熙拥有的一切）
+  //雍正 - 儿子
+  //固定资产：江山     会管理国家：管理的非常好，盛世     打仗：天天打胜仗，御驾亲征
+  //后宫："佳丽3000"
+  //孩子："乾隆以及兄弟姐妹"
+  //做私事：做一些不为人知的事情
+  
+  function YongZheng() {
+    //应该是继承自康熙
+    //this.ziChan = "江山";
+    //自己的属性
+    this.haiZi = "乾隆以及兄弟姐妹";
+    this.houGong = "佳丽3000";
+  }
+  
+  //应该是继承自康熙
+  //YongZheng.prototype.manage = function () {
+  //  console.log("管理的非常好，盛世");
+  //};
+  //YongZheng.prototype.makeWar = function () {
+  //  console.log("天天打胜仗，御驾亲征");
+  //};
+  
+  //设置雍正的prototype等于康熙的实例对象
+  //注意，必须是一个实例对象才可以，因为只有实例对象才能方式内部的所有属性和方法
+  YongZheng.prototype = new KangXi();
+  
+  //自己的方法
+  YongZheng.prototype.makeThing = function () {
+    console.log("做一些不为人知的事情");
+  };
+  
+  var yZ = new YongZheng();
+  console.log(yZ, "雍正的实例对象");
+  console.log(yZ.ziChan);
+  console.log(yZ.haiZi);
+  console.log(yZ.houGong);
+  yZ.manage()
+  yZ.makeWar()
+  yZ.makeThing()
+
+</script>
+
+</body>
+</html>

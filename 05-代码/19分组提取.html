@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  
+  var str = "小明：昨天我得女朋友说想看这个电影，终于找到了，么么哒，我得邮箱是xiaoming@qq.com小红：昨天我跟我老公说我想看这个电影，为了给他一个惊喜，我想先找到，谢谢你，我得邮箱是xiaohong@sina.com韩梅梅：我得同桌想看，我帮他找，好人一生平安，邮箱是lilei@163.com我:wuyou@hotmail.com";
+  
+  
+  var reg = /(\w+)@(?:\w+(?:\.\w+))/g;//切记先保存一次再进行多次调用
+  //正则中可以书写括号，括号表示一个整体，跟js中的计算是相同用法
+  //特殊用法，括号中的每个部分会作为一个分组内容，并且在exec方法中进行分别提取
+  
+  //如果某个括号内的操作是为了表示整体，并不需要进行提取操作，可以在这个括号内部的开始部分书写?:
+  console.log(reg.exec(str));
+  console.log(reg.exec(str));
+  console.log(reg.exec(str));
+  console.log(reg.exec(str));
+  
+  //  var resultArr;
+  //  while (resultArr = reg.exec(str)) {
+  //    console.log("每个人的邮箱是:" + resultArr[0]);
+  //  }
+  //
+
+
+</script>
+
+</body>
+</html>

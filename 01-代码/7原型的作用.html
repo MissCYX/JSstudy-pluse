@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //方法也是属性，所以下面将方法和属性统称为属性了。
+  //什么时候将属性添加到原型中，什么时候将属性书写在构造函数中呢？
+  
+  //1 如果某个属性需要共享，可以放入到原型中
+  //2 如果不需要共享，放入到构造函数的函数体中
+  function DongWu(name, sex) {
+    this.name = name;
+    this.sex = sex;
+  }
+  DongWu.prototype.tuiCount = 4;
+  DongWu.prototype.eat = function () {
+    console.log("他喜欢吃食物");
+  };
+  
+  //猫 狗 猪
+  var cat = new DongWu("猫咪","公");
+  var dog = new DongWu("狗狗","母");
+  var pig = new DongWu("猪猪","公");
+
+  //name是不被共享的属性
+  console.log(cat.name,dog.name,pig.name);
+  //tuiCount是被共享的属性，因为猫狗猪的tuiCount相同
+  console.log(cat.tuiCount,dog.tuiCount,pig.tuiCount);
+  //三者的方法值是相同的，所以方法值通常都放在原型中
+  //先调用主函数，在调用方法函数
+  cat.eat();
+  dog.eat();
+  pig.eat();
+
+</script>
+</body>
+</html>

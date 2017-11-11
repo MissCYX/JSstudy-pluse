@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //可以在正则最开始的位置书写一个^,表示以后面的字符作为开始的字符串可以匹配成功
+  //var reg = /^abc/;
+  //console.log(reg.test("abcfghjkl"));//true
+  //console.log(reg.test("aabcfghjkl"));//false
+  
+  //在正则的最后位置书写一个$,表示结束
+  //var reg = /abc$/;
+  //console.log(reg.test("hgydwyadbaabc"));//true
+  //console.log(reg.test("hgydwyadbaabcdnudwgygd"));//false
+  
+  
+  //当一个正则中同时书写了^和$，表示严格匹配，必须与内部的内容完全一致时，才可匹配成功
+  var reg = /^abc$/;
+  console.log(reg.test("abc"));//true
+  console.log(reg.test("dwadawabcdwada"));//false
+  console.log(reg.test("abcabc"));//false
+
+</script>
+
+</body>
+</html>

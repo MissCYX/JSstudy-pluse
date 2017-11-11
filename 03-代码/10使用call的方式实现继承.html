@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    //console.log(this);
+//    this.sayHello = function () {
+//      console.log("我是构造函数Person中的内部方法");
+//    }
+  }
+  Person.prototype.sayHi = function () {
+    console.log("你好，我是人");
+  };
+  
+  //创建一个Man构造函数，并且需要继承自Person构造函数
+  function Man(name, age, sex) {
+    //Person(); //直接调用Person的构造函数,根据调用的形式，如果没有人调用，this就是window
+    //说明，this跟普通变量的访问方式不同，无法通过普通的作用域链访问方式修改函数内this的指向
+    
+    //call方法是函数的另外一种调用方式，使用call调用的函数跟普通调用的函数在执行效果上没有区别，只是内部的this可以进行更改
+    //call方法的参数1，表示要将调用的函数中的this更改为这个对象值
+    Person.call(this, name, age);
+    
+    this.sex = sex;//这个this指向通过Man创建的实例对象
+  }
+  
+  //  Man();//普通调用时，Person中的this为window
+  //var man = new Man("张三", 18, "男");//构造函数方式调用时，Person中的this也为window
+  var man = new Man("张三", 18, "男");
+  console.log(man);
+  // man.sayHi();//报错，无法使用，因为call的继承方式无法继承原型对象中的属性
+  var man2 = new Man("李四", 27, "女");
+  console.log(man2);//创建了多个实例对象，可以通过传参的形式设置Man的属性以及继承属性的属性值
+  
+  
+  //通过实例对象的方式实现继承(通过构造函数的call调用方式实现继承)
+  //设置方式，在需要继承的构造函数内书写   Person.call(this,参数1，参数2。。。 );
+  //好处：可以继承所有在构造函数体中书写的属性，并且可以进行传参
+  //坏处：无法继承原型中的属性和方法（可以将方法书写在构造函数体中，不推荐，不利于共享属性）
+  
+  
+  //  function daYin(sth) {
+  //    console.log(sth);
+  //  }
+  //
+  //  function fun(chide) {
+  ////    var chide = chide
+  //    daYin(chide);
+  //  }
+  //  fun("白菜");
+
+
+</script>
+</body>
+</html>

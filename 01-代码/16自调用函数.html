@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  (function (window,document) {
+    //1 减少全局变量的使用,减少变量命名的难度
+    //2 通过传参的形式，可以使数据使用的检索过程变简单
+    //如果我现在在这个自调用函数中书写了一个功能
+    function Create() {
+
+
+      
+    }
+    //c1中具有一些方法，可以完成一些功能
+    //var c1 = new Create();
+    //如果在另一个自调用函数中也需要使用c1的功能
+    //可以将需要的数据暴露给全局作用域（通过将数据设置给window的方式，可以在全局作用域中进行访问）
+    //window.create = c1;
+    //简化写法：
+    window.create = new Create();
+    // 暴露给全局变量
+    
+  })(window,document);//这个小括号中书写的参数为实参
+  
+  (function (window) {
+    //上一段功能中书写的对象也可以进行访问了
+    console.log(window.create);//通过加上window，可以增强代码可读性
+  })(window);
+  
+  
+  
+</script>
+</body>
+</html>

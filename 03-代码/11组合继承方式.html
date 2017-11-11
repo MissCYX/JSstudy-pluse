@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //组合继承：将多种不同的继承方式放在一起结合使用
+  
+  //原型方式继承以及call方式继承进行组合使用
+  //原型方式，可以得到所有的属性（需要继承的是原型中的属性）
+  //call方式，可以得到构造函数体中的属性，并且可以进行传参
+  
+  function People(name) {
+    this.name = name;
+  }
+  People.prototype.sayHi = function () {
+    console.log("你好我是张三");
+  };
+  
+  //创建一个Man构造函数，使用组合继承的方式继承People中的所有属性
+  function Man(name, age) {
+    //使用call的方式继承
+    People.call(this, name);
+    this.age = age;
+  }
+  //使用原型方式继承
+  Man.prototype = new People("呵呵呵");//写不写均可,写了也不会显示（设置在了原型对象中）
+  Man.prototype.play = function () {
+    console.log("出去嗨");
+  };
+  
+  //创建实例对象
+  var man = new Man("张三",18);
+  console.log(man.name);
+  console.log(man.age);
+  man.sayHi();
+  man.play();
+
+  console.log(man);
+  
+  //优点：所有的属性和方法均可以被继承，并且所有的属性均可自由传参。
+
+</script>
+</body>
+</html>

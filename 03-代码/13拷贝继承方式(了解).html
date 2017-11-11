@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  var obj = {
+    name: "张三",
+    age: 18,
+    arr: [1, 2, 3]
+  };
+  
+  //  //声明一个变量obj2，对obj对象进行拷贝操作
+  //  //var obj2 = obj;//此种操作是错误写法
+  var obj2 = {};
+  
+  //遍历操作，依次设置对应属性与值
+  for (var k in obj) {
+    //k - 属性名
+    obj2[k] = obj[k];
+  }
+  //    console.log(obj2 === obj);
+  obj.arr[0] = 200;
+  console.log(obj);
+  console.log(obj2);
+  
+  
+  //  function People(name) {
+  //    this.name = name;
+  //  }
+  //  People.prototype.sayHi = function () {
+  //    console.log("你好我是张三");
+  //  };
+  //
+  //  //创建一个Man构造函数，使用组合继承的方式继承People中的所有属性
+  //  function Man(name, age) {
+  //    //1 创建一个People的实例
+  //    var peo = new People(name);
+  //
+  //    //遍历peo这个对象，查看是否可以获取内部的所有属性，如果有设置给this即可
+  //    for(var k in peo){
+  ////      console.log(peo[k]);
+  //      //将peo[k]的所有属性设置给this[k];
+  //      this[k] = peo[k];
+  //    }
+  //
+  //    this.age = age;
+  //  }
+  //  Man.prototype.play = function () {
+  //    console.log("出去嗨");
+  //  };
+  //
+  //  //创建实例对象
+  //  var man = new Man("张三", 18);
+  //  console.log(man.name);
+  //  console.log(man.age);
+  //  man.sayHi();
+  //  man.play();
+  
+  //  console.log(man);
+
+</script>
+
+</body>
+</html>

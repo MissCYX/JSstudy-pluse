@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //这种，通过返回函数，可以从返回的函数中访问内部的局部变量的形式，称为闭包。
+  
+  //闭包 - 封闭、包裹的环境
+  //函数就是一种闭包的形式：函数内部是一个独立的作用域，内部声明的变量无法被外界访问。
+  
+  //我们在平时经常会说，你会不会闭包啊？不是问你会不会使用函数，而是在问你，会不会使用闭包去解决一些问题
+  //说白了，如果打破闭包，访问到内部的数据
+  
+  function fun() {
+    //这个num是一个局部变量，也称为函数fun的私有变量
+    var num = Math.random();
+    //闭包要解决的问题，就是如何能够在闭包外操作到这个私有变量
+
+//    function innerFn() {
+//      //这是一个内部的函数
+//      //可以访问num
+//      console.log(num);
+//    }
+//    return innerFn;
+    
+    return function () {
+      console.log(num);
+    };
+  }
+  
+  var f1 = fun();
+  f1();
+  f1();
+
+
+</script>
+</body>
+</html>

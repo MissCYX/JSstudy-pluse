@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //可以使用正则的字符串方法
+  
+  //字符串.replace()
+  var str = "uagAyuyAbakgAjarAbaAdjgafiAjfiAr";
+  //console.log(str.replace("a", "-"));
+  
+  //replace的参数1可以使用正则表达式进行匹配
+  //普通的正则结构找到一个满足条件的值即可结束
+  //console.log(str.replace(/a/, "-"));
+  //有的情况下，我们希望正则可以匹配到所有满足条件的内容，需要正则的匹配模式
+  //匹配模式：  在正则的最后位置（外面）书写，当一个正则书写多个匹配模式时，书写顺序随意
+  //  g - 全局匹配 - 匹配到所有满足条件的内容
+  //  i - 忽略大小写
+  console.log(str.replace(/a/gi, "-"));
+  
+  //new RegExp("a","gi")
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //跟call的方式类似
+  function People(name) {
+    this.name = name;
+  }
+  People.prototype.sayHi = function () {
+    console.log("你好我是张三");
+  };
+  
+  
+  
+  function Man(name, age) {
+    //使用实例对象的属性保存要继承的构造函数体，并且进行调用，此时保存的构造函数中的this，更改为当前this
+    //好处：可以传参
+    //坏处：原型内的属性无法继承，没有call的方式简便，还会添加一个无用的属性people
+    this.people = People;
+    this.people(name);
+    
+    this.age = age;
+  }
+  Man.prototype.play = function () {
+    console.log("出去嗨");
+  };
+  
+  
+  var man = new Man("张三", 18)
+  console.log(man);
+
+</script>
+
+</body>
+</html>

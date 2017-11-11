@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  var arr = [
+    {x: 3, y: 1, bgColor: "red"},//原始的蛇头数据
+    {x: 2, y: 1, bgColor: "orange"},
+    {x: 6, y: 1, bgColor: "orange"},
+    {x: 8, y: 1, bgColor: "orange"},
+    {x: 4, y: 1, bgColor: "orange"},
+    {x: 31, y: 1, bgColor: "orange"},
+    {x: 4, y: 1, bgColor: "orange"},
+    {x: 17, y: 1, bgColor: "orange"},
+    {x: 0, y: 1, bgColor: "orange"}
+  ]
+  
+  //正向遍历的方式会使得该效果出现问题（实际上都变成了第一个对象的数据值）
+  //  for (var i = 1; i < arr.length; i++) {
+  //    arr[i].x = arr[i - 1].x;
+  //    arr[i].y = arr[i - 1].y;
+  //  }
+  
+  //反向遍历可以
+  for (var i = arr.length - 1; i > 0; i--) {
+    arr[i].x = arr[i - 1].x;
+    arr[i].y = arr[i - 1].y;
+  }
+  
+  console.log(arr);
+
+
+</script>
+
+</body>
+</html>

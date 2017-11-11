@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  
+  var obj = {};//用于保存计算过的数据
+  
+  function getFb(n) {
+    
+    //if (n == 2 || n == 1) {//如果n为2或者1，都返回1
+    //  return 1;
+    //} else {
+    //  return getFb(n - 1) + getFb(n - 2);
+    //}
+    
+    //先设置为ifelse结构，再化简为三元运算符的形式
+    //return (n == 2 || n == 1) ? 1 : getFb(n - 1) + getFb(n - 2);
+    //实际上，之所以执行函数的次数过多，是因为进行了许多次重复的不必要的计算
+    //在每次计算出某个位置的数值后，进行一个保存，并且在取值时检测保存的内容
+    //如果已经计算过这个值，就不在计算了，直接取出使用
+    
+    
+    //在每一次调用函数时，针对当前要获取的第n个位置的值进行检测
+    if (obj[n]) {//将n作为属性名，看看有没有对应的值
+      //说明当前n这个位置的值已经计算过了，直接返回
+      return obj[n];
+    } else {
+      //正常计算
+      return (n == 2 || n == 1) ? 1 : (obj[n] = getFb(n - 1) + getFb(n - 2));
+    }
+  }
+  
+  //执行后，我们发现爱俺，即使是计算数列中的第1475个值也只是一瞬间的事情，执行的速度明显提升了很多
+  console.log(getFb(1475));
+  console.log(Number.MAX_VALUE);
+  
+  
+  //  var obj2 = {};
+  //  obj2[5] = "abc";
+  //  obj2.6
+  //  console.log(obj2);
+  
+  //  var num = 200;//初始化操作
+  //  console.log(num = 10);
+
+
+</script>
+</body>
+</html>

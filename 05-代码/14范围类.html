@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //范围类是对字符类的扩展
+  //var reg = /[abcdefghigklmn]/;
+  //var reg = /[a-n]/;//表示a到n之间的所有小写字符
+  //console.log(reg.test("45678a9"));
+  //console.log(reg.test("45678h9"));
+  
+  //想要表示所有的小写字母  [a-z]
+  //想要表示所有的大写字母  [A-Z]
+  //想要表示所有的数字  [0-9]   \d
+  
+  
+  //组合类
+  //组合类是对范围类功能的扩展
+  
+  //想要匹配的字符是数字或者小写字母都可以
+  var reg = /[0-9a-z]/;
+  console.log(reg.test("8"));//true
+  console.log(reg.test("j"));//true
+  console.log(reg.test("UYUIGBU"));//false
+  
+  //  \w 匹配所有的单词字符   使用组合类表示： [0-9a-zA-Z_]
+  
+  //想要匹配大写c到i，数字7-9，小写字母j-z
+  //   /[C-I7-9j-z]/;
+  
+  
+  
+
+
+</script>
+</body>
+</html>

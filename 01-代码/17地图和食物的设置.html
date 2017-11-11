@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #CCCCCC;
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+  //分析：
+  //我们发现，每个食物的显示位置是随机的，但是有需要有一定的规律
+  //位置需要是食物盒子宽度的整数倍数，下限0，上限39
+  //Math.floor(Math.random() * 地图的宽度/食物的宽度);
+  
+  
+  (function () {
+    //当前功能中需要的是食物对象，可以书写一个构造函数，用于食物的创建
+    function Food(options) {
+      //食物中需要设置哪些属性？
+      //宽，高，颜色，横坐标，纵坐标，食物放置的位置(元素放置的位置，地图)
+      this.width = options.width || 20;
+      this.height = options.height || 20;
+      this.bgColor = options.bgColor || "green";
+      this.x = 0;//设置初始值0，一会儿在方法中需要设置为随机的位置
+      this.y = 0;//需要设置为随机的值
+      //可以在使用时给this添加一个属性element,用于保存food的标签盒子
+      this.element = document.createElement("div");
+      this.map = options.map;
+      
+      //通常我们会将实例对象的初始化方法在构造函数内部进行调用，方便书写
+      //this.init();
+    }
+    
+    //设置食物进行初始化方法：
+    //init - 初始化
+    Food.prototype.init = function () {
+      //用于执行一些准备工作：创建食物盒子，设置样式，添加到指定位置
+      //我们发现，init中的功能均为必须的代码，只要创建了食物就必须执行
+//      var div = document.createElement("div");
+//      this.element = div;
+      var div = this.element;//我们发现，这个创建的元素需要在其他的方法中使用，需要设置给this的一个属性
+      //可以回到构造函数中先对这个属性进行设置，再回到方法中进行使用
+      div.style.width = this.width + "px";
+      div.style.height = this.height + "px";
+      div.style.position = "absolute";
+      div.style.backgroundColor = this.bgColor;
+      this.map.appendChild(div);
+    };
+    
+    //设置食物的随机显示位置:
+    Food.prototype.setRandomPos = function () {
+      //给this.element设置随机的位置left和top
+      this.x = Math.floor(Math.random() * this.map.offsetWidth / this.width) * this.width;
+      this.y = Math.floor(Math.random() * this.map.offsetHeight / this.height) * this.height;
+      //设置给元素
+      this.element.style.left = this.x + "px";
+      this.element.style.top = this.y + "px";
+    }
+    
+    var map = document.getElementById("map");
+    var food1 = new Food({
+      map: map
+    });
+    //让food1进行初始化操作
+    food1.init();
+    //设置食物的随机位置
+    food1.setRandomPos();
+    
+    
+  })();
+
+
+</script>
+</body>
+</html>

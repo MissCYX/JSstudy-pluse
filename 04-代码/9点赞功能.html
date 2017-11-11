@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      float: left;
+      margin-right: 80px;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <img src="images/1.jpg" alt="">
+  <button>赞(0)</button>
+</div>
+
+<div>
+  <img src="images/2.jpg" alt="">
+  <button>赞(0)</button>
+</div>
+
+<div>
+  <img src="images/3.jpg" alt="">
+  <button>赞(0)</button>
+</div>
+
+<div>
+  <img src="images/4.jpg" alt="">
+  <button>赞(0)</button>
+</div>
+
+<script>
+  //1 获取元素
+  var pics = document.getElementsByTagName("img");//获取所有的图片
+  var btns = document.getElementsByTagName("button");//获取所有的按钮
+  //2 遍历，给btns中的按钮设置点击事件
+  for (var i = 0; i < btns.length; i++) {
+    
+    //每一个按钮的事件都需要使用一个单独的闭包进行计数
+    btns[i].onclick = dianZan();//得到一个函数体，并且对应一个闭包
+    
+  }
+  
+  
+  function dianZan() {
+    //声明一个私有变量
+    var count = 0;//初始值
+    
+    //设置一个可以访问闭包内私有变量的函数
+    return function () {
+      count++;//可以访问到闭包内的私有变量
+      console.log(count);
+      //找到操作的标签，使用this即可
+      this.innerHTML = "赞(" + count + ")";
+    };
+  }
+  
+  
+  //对dianZan功能的测试代码：
+  var dianZan1 = dianZan();//创建了一个闭包，内部具有一个私有变量
+  dianZan1();//赞数增加1
+  dianZan1();//赞数增加1
+  dianZan1();//赞数增加1
+  
+  var dianZan2 = dianZan();//创建了另一个闭包，与上一个闭包没有任何的关联，计数是相互独立的
+  dianZan2();//赞数增加1
+  dianZan2();//赞数增加1
+  dianZan2();//赞数增加1
+  
+  //将设置事件操作分解来看，实际上与上面的测试代码是相同的形式：
+  //给每个btns中的按钮添加事件，就相当于创建了多个闭包
+  // 每一个按钮的点击操作，都是对不同的闭包内的私有变量进行修改
+  //btns[0].onclick = dianZan();//得到一个函数体，并且对应一个闭包
+  //btns[1].onclick = dianZan();//得到一个函数体，并且对应一个闭包
+  //btns[2].onclick = dianZan();//得到一个函数体，并且对应一个闭包
+  //btns[3].onclick = dianZan();//得到一个函数体，并且对应一个闭包
+
+
+</script>
+</body>
+</html>

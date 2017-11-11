@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  var fun = function () {
+    //1 callee
+    //arguments的callee属性指向了当前函数
+    //console.log(arguments);
+    //console.log(arguments.callee);
+    
+    //具体的使用场景，下面讲解递归的使用后，在进行说明
+    
+    //2 caller 调用者,与this不是一个概念
+    //这种通过arguments的caller属性访问的方式现在已经废弃了，而是使用函数的caller
+    //这个caller属性表示的不是谁去.的这个方法，而是当前函数被调用时处于那个函数中，返回这个函数
+    //全局作用域下调用caller属性返回null
+    //arguments.caller
+    
+    console.log(fun.caller);
+  };
+  fun(1, 2, 3);//全局调用时，打印caller属性值为null
+  
+  //在函数fun2中调用了函数fun，同时打印调用者
+  function fun2() {
+    fun();//fun2中调用，打印的caller属性为fun2
+  }
+  fun2();
+</script>
+</body>
+</html>

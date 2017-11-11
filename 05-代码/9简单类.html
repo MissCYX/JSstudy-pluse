@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //在内部直接书写内容，表示简单类写法
+  //用于匹配含有连续abc的字符串(只要字符串中含有abc即可匹配成功)
+  var reg = /qwe/;
+  
+  //正则方法，正则对象.test(要检测的字符串)  , 匹配成功返回true，否则返回false
+
+  console.log(reg.test("nuhuabcgiugu"));
+  console.log(reg.test("nuhuadbcgiugu"));
+  console.log(reg.test("abcabc"));
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  var fun = function () {
+    //return 100;
+    return function () {
+      console.log("我是返回值函数")
+    };
+  };
+  ////fun();//100
+  //fun();//function(){}
+  //
+  ////通常会使用变量接受到返回的函数值后在进行使用
+  //var resultFun = fun();
+  //resultFun();
+  
+  
+  //function fun() {
+  //  //局部作用域
+  //  var num = Math.random();//这个变量在外界是否可以访问呢？
+  //  //想要使用这个num怎么办？需要给函数设置返回值
+  //  return num;
+  //}
+  //调用了两次fun，得到了2的数，问这两个100是不是同一个数？
+  //实际上，我们两次调用一个函数时，内部的返回值并不是同一段数据
+  //console.log(fun());
+  //console.log(fun());
+  
+  
+  function fun() {
+    var num = Math.random();
+    
+    function innerFn() {
+      //这是一个内部的函数
+      //可以访问num
+      console.log(num);
+    }
+    return innerFn;
+  }
+  
+  var f1 = fun();
+  f1();
+  f1();
+
+
+</script>
+</body>
+</html>

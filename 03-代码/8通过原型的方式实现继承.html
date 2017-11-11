@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+
+  function KangXi() {
+    this.ziChan = "江山";
+  }
+  KangXi.prototype.manage = function () {
+    console.log("管理的非常好，盛世");
+  };
+  KangXi.prototype.makeWar = function () {
+    console.log("天天打胜仗，御驾亲征");
+  };
+  
+  
+  function YongZheng() {
+    this.haiZi = "乾隆以及兄弟姐妹";
+    this.houGong = "佳丽3000";
+  }
+  
+  //通过原型，保存KangXi的实例对象，实现继承
+  //如果通过原型的方式继承，继承操作的代码需要在最前面书写，书写后再去设置原型中的新属性即可
+  YongZheng.prototype = new KangXi();
+  
+  //自己的方法
+  YongZheng.prototype.makeThing = function () {
+    console.log("做一些不为人知的事情");
+  };
+  
+  var yZ = new YongZheng();
+  console.log(yZ);
+
+</script>
+
+</body>
+</html>

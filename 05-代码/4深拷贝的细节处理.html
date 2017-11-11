@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //对象是复杂数据类型，所有在进行拷贝时，通过直接赋值的方式无法达到真正的复制效果
+  var obj = {
+    name: "张三",
+    age: 18,
+    sex: "女",
+    scores: {
+      yuWen: 200,
+      math: 200,
+      yingYu: 200
+    },
+    size: [10, 20, 30]
+  };
+  var obj2 = {};
+  
+  //copyObj表示被拷贝的那个对象，targetObj表示拷贝到的目标对象
+  function deepCopy(copyObj, targetObj) {
+    //遍历需要拷贝的那个对象obj
+    for (var k in copyObj) {
+      //需要考虑的问题：null的检测结果为"object"
+      if (typeof copyObj[k] != "object" || copyObj[k] === null) {
+        //函数可以通过检测，并且可以像基本数据类型一样进行直接赋值操作
+        targetObj[k] = copyObj[k];
+      } else {
+        //说明当前obj[k]肯定是一个复杂数据类型，但是复杂数据类型中有对象和数组
+        //根据obj[k]的具体类型，需要分别创建对象或数组
+        targetObj[k] = (copyObj[k] instanceof Array) ? [] : {};
+        deepCopy(copyObj[k], targetObj[k]);
+      }
+    }
+  }
+  deepCopy(obj, obj2);
+  
+  console.log(obj);
+  console.log(obj2);
+
+
+</script>
+
+</body>
+</html>

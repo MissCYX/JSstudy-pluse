@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //对象是复杂数据类型，所有在进行拷贝时，通过直接赋值的方式无法达到真正的复制效果
+  var obj = {
+    name: "张三",
+    age: 18,
+    sex: "女",
+    scores : [100,90,87]
+  };
+  
+  //这种赋值的复制方式实际上并没有复制，只是使用两个变量指向了同一个对象的数据
+  //var obj2 = obj;
+  //obj.age = 27;
+  //console.log(obj2);
+  
+  //浅拷贝：通过对对象进行遍历的方式，将每个属性的值依次拷贝即可
+  var obj2 = {};
+  //遍历需要拷贝的那个对象obj
+  for(var k in obj){
+    //将obj中的每个属性设置给obj2中的对应属性
+    obj2[k] = obj[k];
+  }
+
+  //关于复杂数据类型在控制台中打印的小问题。
+  //console.log(obj);
+  //obj.name = "李四";
+  //console.log(obj);
+  
+  //实现了对对象obj的拷贝，这种拷贝方式称为浅拷贝
+  console.log(obj,obj2);
+  
+  
+  //我们发现，如果对象中的某个属性的值也是复杂数据类型，是无法复制成功的
+  obj.scores[0] = 2000;
+  console.log(obj2.scores[0]);
+
+
+</script>
+
+</body>
+</html>

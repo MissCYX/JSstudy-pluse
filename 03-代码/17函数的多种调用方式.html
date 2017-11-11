@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //函数的调用方式
+  //1 标准方式:  函数名()
+  var fun1 = function () {
+    console.log("我是fun函数");
+    console.log(this);
+  };
+  fun1();//此函数代码可以执行，内部的this为window对象，没有意义
+  
+  //2 使用call方法
+  var fun2 = function (a, b) {
+    console.log(a, b);
+    console.log(this);
+  };
+  //使用call的方式表示调用前面的那个函数，效果：
+  //2.1 什么也不传，执行效果跟普通调用没有区别,this指向window
+  //  fun2.call();
+  //2.2 传入参数1为null，后面的其他参数对应内部的形参
+  //参数可以正常传递，并且this的指向为window，没有修改
+  //fun2.call(null,10,20);
+  //2.3 将参数1设置为一个对象，此时函数内的this指向参数1这个对象
+  //var obj = {name: "张三"};
+  //fun2.call(obj, 20, 30);
+  
+  //3 使用apply方法
+  var fun3 = function (a, b, c) {
+    console.log("我是代码")
+    console.log(a, b, c);
+    console.log(this);
+  }
+  //3.1 什么也不传
+  //fun3.apply();
+  //3.2 传入参数1为null，后面传入一个数组
+  //fun3.apply(null,[100,200,300]);
+  //3.3 参数1设置为一个对象
+  var obj = {name: "张三"};
+  fun3.apply(obj, [1, 2, 3]);
+  
+  //结论：
+  //1 基本方式与call方法和apply方法均可以调用函数，执行内部代码
+  //2 call和apply的使用功能基本相同，目的就是为了改变一个函数中this的指向
+  //3 区别：实参的传入形式不同，call为多个实参依次传入，apply为数组形式整体传入。
+</script>
+</body>
+</html>

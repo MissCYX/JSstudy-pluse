@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //计算任意两个偶数之间的所有偶数的和
+  //n是大的偶数，m是小的偶数
+  function getSum(n, m) {
+    //10 到  2
+    //伪代码分析：
+    //return 10 + (所有小于8的偶数的和);
+    //return 8 + (所有小于6的偶数的和);
+    //return 6 + (所有小于4的偶数的和);
+    //return 4 + (所有小于2的偶数的和);
+    //return 2;
+    
+    //代码分析：
+    //return 10 + getSum(8, 2);
+    //return 8 + getSum(6, 2);
+    //return 6 + getSum(4, 2);
+    //return 4 + getSum(2, 2);
+    //return 2;
+    
+    if (n == m) {//设置结束条件
+      return m;
+    }
+    return n + getSum(n - 2, m);//根据规律设置代码
+  }
+  console.log(getSum(10, 2));
+
+
+</script>
+
+</body>
+</html>

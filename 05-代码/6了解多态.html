@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //面向对象的三个特征中，封装和继承的目的都是为了更好的数据共享
+  //多态：为了功能的使用更加灵活
+  
+  function DongWu(name) {
+    this.name = name;
+  }
+  DongWu.prototype.toWC = function () {
+    //console.log("哈喽,我是动物");
+    
+    //人类上厕所，只需要脱裤子
+    //猫咪上厕所，需要抬腿，还需要猫屎盆
+    if (arguments.length == 1) {
+      console.log("人类上厕所");
+    } else {
+      console.log("朕上厕所了,铲屎官准备铲屎");
+    }
+    
+  };
+  
+  //人类的构造函数
+  function People(name, age) {
+    DongWu.call(this, name);
+    this.age = age;
+//    this.sayHi = function () {
+//      console.log("我是人");
+//    }
+  }
+  People.prototype = new DongWu();
+  
+  //小猫的构造函数
+  function Cat(name, sex) {
+    DongWu.call(this, name);
+    this.sex = sex;
+//    this.sayHi = function () {
+//      console.log("猫");
+//    }
+  }
+  Cat.prototype = new DongWu();
+  
+  
+  //当我们使用了继承后，发现一个方法被多个构造函数继承时，可能需要的功能并不是完全相同的
+  //多态：多种状态，一个功能在被不同的对象使用时应当表现出不同的效果
+  
+  //实现方式：覆盖，重载
+  //方式1：覆盖的方式，给构造函数内部直接添加实例属性，覆盖点原型中继承的属性,缺点1比較麻烦，缺点2不利于数据的共享
+  //方式2：重载是针对方法的(模拟函数重载)
+  
+  
+  //  function fun() {
+  //    //通过检测arguments的length属性，进行不同的功能设置
+  //    if (arguments.length == 1) {
+  //      console.log("你有一个参数");
+  //    } else {
+  //      console.log("你有n个参数");
+  //    }
+  //  }
+  //  fun(1);
+  //  fun(1, 2);
+  
+  //通过重载的方式实现toWC方法的多态效果
+  //var ren = new People();
+  //ren.toWC("脱裤子");
+  //var maoMi = new Cat();
+  //maoMi.toWC("到屎盆里面", "抬腿");
+  
+  //我们发现，多态的实现方式不难（难度），但是功能结构比較复杂（步骤多少）
+  
+  //结论：不用
+
+
+</script>
+</body>
+</html>

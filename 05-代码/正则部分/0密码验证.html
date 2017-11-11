@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  body {
+    background: #ccc;
+  }
+  
+  label {
+    width: 40px;
+    display: inline-block;
+  }
+  
+  span {
+    color: red;
+  }
+  
+  .container {
+    margin: 100px auto;
+    width: 400px;
+    padding: 50px;
+    line-height: 40px;
+    border: 1px solid #999;
+    background: #efefef;
+  }
+  
+  span {
+    margin-left: 30px;
+    font-size: 12px;
+  }
+  
+  .wrong {
+    color: red
+  }
+  
+  .right {
+    color: green;
+  }
+  
+  .strengthLv0 {
+    height: 6px;
+    width: 120px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+  
+  .strengthLv1 {
+    background: red;
+    height: 6px;
+    width: 40px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+  
+  .strengthLv2 {
+    background: orange;
+    height: 6px;
+    width: 80px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+  
+  .strengthLv3 {
+    background: green;
+    height: 6px;
+    width: 120px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+</style>
+<body>
+<div class="container">
+  <label>密码</label>
+  <input type="text" id="ipt" maxlength="16">
+  <div class="pass-wrap">
+    <em>密码强度：</em>
+    
+    <em id="strength"></em>
+    
+    <div id="strengthLevel" class="strengthLv0"></div>
+  </div>
+</div>
+<script>
+  //1 获取元素
+  var ipt = document.getElementById("ipt");
+  var strength = document.getElementById("strength");//用于显示强度文字
+  var strengthLevel = document.getElementById("strengthLevel");//用于显示强度文字
+  var arr = ["", "弱", "中", "强"];
+  
+  //2 给输入框添加keyup事件
+  ipt.onkeyup = function () {
+    //5 后期添加，在进行内容检测之前，先判断输入内容的字符个数，如果小于6位不执行后面的代码
+    if (this.value.length < 6) {
+      //可以将所有的显示效果还原为默认
+      strength.innerHTML = "";
+      strengthLevel.className = "strengthLv0";
+      return;
+    }
+    
+    //3 检测当前用户输入的内容中具有几类字符、
+    var count = 0;//声明一个变量用于记录字符类别的个数
+    
+    //设置一个数字字符检测的正则对象
+    //var reg = /[0-9]/;
+    var reg = /\d/;
+    if (reg.test(this.value)) {count++;}
+    //验证小写字符
+    if (/[a-z]/.test(this.value)) {count++;}
+    //验证大写字符
+    if (/[A-Z]/.test(this.value)) {count++;}
+    
+    //4 根据count的值，设置文字显示与底部强度等级条的类名修改
+    strengthLevel.className = "strengthLv" + count;
+    //文字显示：
+    // 类别个数为 0  ""
+    //          1  "弱"
+    //          2   "中"
+    //          3   "强"
+    //将count作为索引值使用
+    strength.innerHTML = arr[count];
+    
+    
+  };
+
+
+</script>
+</body>
+</html>

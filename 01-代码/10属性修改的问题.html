@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //this只能在方法中使用才有意义
+  function DongWu(name, sex) {
+    this.name = name;
+    this.sex = sex;
+  }
+  
+  //所有实例对象共有的属性和方法
+  DongWu.prototype.age = 5;
+  DongWu.prototype.eat = function () {
+    console.log("他喜欢吃食物");
+  };
+  
+  //创建的实例对象：
+  var cat = new DongWu("猫咪", "公");
+  
+  //通过实例对象修改内部的age属性,age是添加给了cat实例对象自身，但是原型中的age
+//  cat.__proto__.age = 10;
+  console.log(cat);
+  
+  var dog = new DongWu("狗狗", "公");
+  console.log(dog.age);//10
+  
+  //以后当我们通过实例对象修改某个属性时，需要考虑到底修改的是对象本身的属性还是原型的属性
+
+</script>
+</body>
+</html>

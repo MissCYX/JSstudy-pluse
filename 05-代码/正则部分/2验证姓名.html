@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  body {
+    background: #ccc;
+  }
+  
+  label {
+    width: 40px;
+    display: inline-block;
+  }
+  
+  span {
+    color: red;
+  }
+  
+  .container {
+    margin: 100px auto;
+    width: 400px;
+    padding: 50px;
+    line-height: 40px;
+    border: 1px solid #999;
+    background: #efefef;
+  }
+  
+  span {
+    margin-left: 30px;
+    font-size: 12px;
+  }
+  
+  .wrong {
+    color: red
+  }
+  
+  .right {
+    color: green;
+  }
+  
+  .defau {
+    width: 200px;
+    height: 20px;
+  }
+  
+  .de1 {
+    background-position: 0 -20px;
+  }
+</style>
+<body>
+<div class="container">
+  <label>姓名</label><input type="text" id="ipt"><span></span><br/>
+</div>
+<script>
+  //验证中文姓名, 中文字符2-4位
+  //需要的时候，百度搜一下，使用即可
+  //  /^[\u4e00-\u9fa5]{2,4}$/
+  
+  //1 获取元素
+  var ipt = document.getElementById("ipt");
+  //2 给ipt添加事件
+  ipt.onblur = function () {
+    var nextSib = this.nextSibling;//保存了输入框后面的提示词盒子
+    //使用正则去验证当前输入的内容
+    if (/^[\u4e00-\u9fa5]{2,4}$/.test(this.value)) {
+      //设置内容和类名修改即可
+      nextSib.innerHTML = "正确";
+      nextSib.className = "right";
+    } else {
+      nextSib.innerHTML = "错误";
+      nextSib.className = "wrong";
+    }
+  };
+
+
+</script>
+</body>
+</html>

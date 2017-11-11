@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //instance 实例
+  // 操作数1 instanceof 操作数2
+  //操作数1应当为一个对象，操作数2应当为一个构造函数
+  //含义：如果操作数1是通过后面传入的构造函数创建的，返回true
+  
+  var arr = [1, 2, 3];
+  console.log(arr instanceof Array);
+  
+  
+  function Dog() {
+  }
+  var haShiQi = new Dog();
+  
+  //instanceof实际上是用于数据类型检测的，意味着haShiQi是不是Dog类型的
+  console.log(haShiQi instanceof Dog);
+
+
+</script>
+</body>
+</html>

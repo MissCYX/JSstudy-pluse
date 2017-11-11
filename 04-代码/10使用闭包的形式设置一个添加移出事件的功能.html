@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //1 简单事件添加：覆盖
+  //  移除  xxx.onxxx = null;   //一次移出了所有设置过的事件
+  //2 addEventListener  removeEventListener
+  //3 attachEvent  detachEvent
+  
+  //想要设置一个window.onload入口函数
+  //  window.onload = function () {
+  //    console.log("功能1");
+  //  }
+  //  window.onload = function () {
+  //    console.log("功能2");
+  //  }
+  //  window.onload = function () {
+  //    console.log("功能3");
+  //  }
+  
+  //设置window的加载事件的功能
+  function setLoad() {//这是一个闭包(局部作用域)
+    var eventArr = [];//创建了一个私有变量(局部变量)
+    
+    //下面的两个功能，都需要访问闭包内的私有变量,可以使用对象的方式进行保存，将两个功能设置为方法
+    return {
+      addLoad: function (fn) {//添加：可能会进行多次的事件设置
+        //可不可以访问闭包内的私有变量呢？可以
+        //放入到eventArr中
+        eventArr.push(fn);
+        //根据当前eventArr中的函数，设置window的onload事件中需要执行的事件代码
+        window.onload = function () {
+          for (var i = 0; i < eventArr.length; i++) {
+            eventArr[i]();
+          }
+        };
+      },
+      removeLoad: function (fn) {//移除：能够移除指定的处理程序
+        //同样也可以访问闭包内的私有变量
+        //fn要移除的事件处理程序,需要从eventArr中找到对应的事件处理程序，进行移除
+        for (var i = 0; i < eventArr.length; i++) {
+          //检测时，一定注意，如果想要移除某个事件处理程序，需要在设置时和移除是传入的是一个相同的函数引用
+          if (eventArr[i] == fn) {
+            //删除数组eventArr中的这个元素
+            eventArr.splice(i, 1);
+          }
+        }
+        //根据修改后的eventArr重新设置onload事件代码
+        window.onload = function () {
+          for (var i = 0; i < eventArr.length; i++) {
+            eventArr[i]();
+          }
+        };
+        
+      }
+    };
+    
+  }
+  
+  //创建了一个闭包
+  var sl = setLoad();
+  //我们想要设置一个功能，可以设置onload的代码，也可以移出某个onload的代码
+  sl.addLoad(function () {
+    console.log("功能1");
+  });
+  sl.addLoad(function () {
+    console.log("功能2");
+  });
+  sl.addLoad(fun);
+  
+  function fun() {
+    console.log("功能3");
+  }
+  
+  sl.removeLoad(fun);
+
+
+</script>
+</body>
+</html>

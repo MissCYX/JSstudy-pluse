@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  var fun = function () {
+    var count = 0;//私有变量
+    return function () {
+      count++;//修改了私有变量
+      console.log(count);
+    };
+  };
+  
+  //第一步调用fun后，形成了一个闭包的环境
+  var f1 = fun();//函数体
+  //后面对f1的多次调用只是修改了闭包中的私有变量，并不会发生重置。
+  f1();//1
+  f1();//2
+  f1();//3
+  
+  
+  var f2 = fun();
+  f2()
+  
+  //此种写法具有什么样的好处呢？对比以下写法
+  var num = 0;
+  num++;
+  console.log(num);
+  num++;
+  console.log(num);
+  num++;
+  console.log(num);
+  
+  num = 600;//数据随时可能被其他操作进行修改
+  console.log(num);
+  
+  //优点：让你的数据更加的安全
+
+</script>
+
+</body>
+</html>

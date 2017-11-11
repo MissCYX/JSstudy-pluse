@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //函数也是对象，内部就会具有一些属性
+  //var fun = function (a,b,c) {
+  //  //console.log(arguments == fun.arguments);
+  //
+  //  console.log(arguments);
+  //};
+  //fun(1,2,3);
+  //console.dir(fun);
+  
+  //1 函数.name属性   : 只读
+  //console.log(fun.name);
+  //fun.name = "张三";
+  //console.log(fun.name);
+  
+  //2 函数.length   :  形参个数
+  //console.log(fun.length);
+  
+  //3 函数.arguments  注意，功能与arguments对象相同，但是不是同一个东西
+  //函数的arguments属性是一个已经被废弃的属性，不推荐使用了，推荐使用函数内的arguments对象
+  
+  //4 arguments对象：伪数组形式（有索引长度，但是没有数组的方法,原因是无法访问到Array.prototype）
+  
+  //伪数组结构，如果想要使用数组方法，可不可以实现呢？
+  //function fun() {
+  //arguments
+  
+  //思考数组为什么可以使用数组方法？
+  //var arr = [];//创建数组
+  //arr.join();//调用数组方法
+  //Array.prototype.join = function () {//思考数组方法的设置方式
+  //如何访问当前实例对象数组？
+  //this//指向了调用的数组
+  //如果可以将数组方法内的this修改为arguments对象，就可以让arguments使用数组方法了。
+  //}
+  //通过call的方式修改了数组方法内的this指向，调用数组方法
+  //console.log(Array.prototype.join.call(arguments,"-"));
+  //}
+  //fun(1, 2, 3);
+  
+  //Object.prototype.toString
+  //构造函数Object的原型中具有一个toString
+  //这个toString是用来检测数据类型的
+  //Object.prototype.toString.call();
+  
+  
+  //使用num借用对象的toString方法
+  var num = 100;
+  console.log(num.toString());//num自身具有了toString
+  
+  //创建一个基本保证类型对象Number，查看内部的toString方法位置
+  //通过观察发现，Number的原型对象中具有toString，所以使用时，无法找到Object.prototype中的toString
+  //console.dir(new Number(100));
+  
+  //想要使用Object.prototype中的toString去查看num的数据类型
+  //通过call方法去借用Object.prototype中的toString方法，方式就是更改内部的this指向
+  console.log(Object.prototype.toString.call(num));
+  var obj = new Object();
+  console.log(obj.toString());
+
+
+</script>
+
+</body>
+</html>

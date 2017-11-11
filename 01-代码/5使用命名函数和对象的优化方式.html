@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  
+  function People(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.sayHi = tempObj.sayHi;
+    this.eat = tempObj.eat
+  }
+  
+  //可以使用命名函数的方式节省占用的空间，但是命名函数的书写个数可能会很多，占用了命名
+  var tempObj = {
+    sayHi: function () {
+      console.log("你好，我是" + this.name);
+    },
+    eat: function () {
+      console.log("我吃了好多馒头");
+    }
+  };
+  
+  
+  //实例对象
+  var p1 = new People("张三", 18, "男");
+  var p2 = new People("李四", 18, "男");
+  
+  //p1.sayHi();
+  //p2.sayHi();
+  
+  console.log(p1.sayHi == p2.sayHi);
+  console.log(p1.eat == p2.eat);
+</script>
+</body>
+</html>

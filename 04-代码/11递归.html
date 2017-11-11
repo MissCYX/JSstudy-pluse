@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //递归：一个函数内部可以调用其他的函数，同样也可以调用自己，在函数内调用自身的方式称为递归
+  
+  //递归的问题：可能会出现死循环
+  //function fun() {
+  //  fun();
+  //}
+  
+  //使用递归时的基本步骤：
+  //1 找到需要执行的功能的规律
+  //2 根据规律设置代码
+  //3 找到可以使递归结束的条件
+  
+  
+  //计算1-n之间所有数的和
+  
+  //  function getSum1(n) {
+  //    var sum = 0;
+  //    for (var i = 1; i <= n; i++) {
+  //      sum+=i;
+  //    }
+  //   return sum;
+  //  }
+  //  console.log(getSum1(20));
+  
+  //1 找规律，设想函数的使用方式，假设函数已经设置完毕了
+  getSum(5);//意味着计算出了1-5之间所有数的和
+  
+  function getSum() {
+    //当前需要计算出的是1-5的所有数
+    //5 + 4 + 3 + 2 + 1
+    //伪代码分析：
+    //      return  5 + (1到4之间所有数的和);
+    //      return  4 + (1到3之间所有数的和)
+    //      return  3 + (1到2之间所有数的和)
+    //      return  2 + (1到1之间所有数的和)
+    //      return  1;//1是递归的结束条件
+    //代码分析：
+    //          return 5 + getSum(4);
+    //          return 4 + getSum(3);
+    //          return 3 + getSum(2);
+    //          return 2 + getSum(1);
+    //          return 1;
+  }
+  function getSum(n) {
+    //在某一次时，设置结束条件
+    if (n == 1) {
+      return 1;
+    }
+    //根据规律设置代码
+    return n + getSum(n - 1);
+  }
+  console.log(getSum(100));
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //字符类的标识方式是在正则中书写[] ---- 注意，与js中的数组字面量完全没有关系
+  //中括号内整体表示某一个字符可能出现的值
+  
+  //可以匹配的字符串中某一个字符可以是a或b或c，均可成功
+  var reg = /[abc]/;
+
+  console.log(reg.test("nuihuinjbu"));//true
+  console.log(reg.test("nuihuabcinjbu"));//true
+  console.log(reg.test("nuaihuinju"));//true
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //1 原型链
+  //通过__proto__属性进行联系的一种查找方式
+  //实例对象 __proto__
+  //原型对象 constructor
+  //构造函数 prototype
+  
+  //查找方式：当我们使用一个对象的属性时，首先查找当前对象内部的属性（实例属性），如果有，使用，如果没有去原型对象中进行查找
+  //如果有，使用，如果没有再查找原型对象的__proto__，一直找到Object.prototype,如果没有，进行报错
+  
+  //需要会自己进行图例分析：你们说自己能画
+  
+  
+  //2 面向对象编程的特征
+  //封装：将功能封装为对象形式进行使用
+  //继承：进行更好的数据共享
+  //多态：今天会说，js不支持，但是可以模拟，由于具有一些问题，使用的较少。
+  
+  //3 继承
+  //3.1 原型继承方式
+  //  function People(name) {
+  //    this.name = name;
+  //  }
+  //  People.prototype.sayHi = function () {
+  //    console.log("我是sayHi方法");
+  //  };
+  
+  //让Man构造函数继承自People
+  //  function Man(age) {
+  //    this.age = age;
+  //  }
+  //  Man.prototype = new People("张三");//使用当前构造函数的原型属性，保存People的实例对象
+  //  Man.prototype.sayHello = function () {
+  //    console.log("我是sayHello");
+  //  }
+  //
+  //  //实例化操作
+  //  var m1 = new Man(18);
+  //  console.log(m1.name);
+  //  console.log(m1.age);
+  //  m1.sayHi();
+  //  m1.sayHello();
+  //  var m2 = new Man(20);
+  //  console.log(m2.name);
+  
+  //原型继承的好处：构造函数内和原型对象内的属性和方法均可继承
+  //缺点：构造函数内的属性，无法进行多次设置，是固定值
+  
+  
+  //3.2 call方式
+  //  function People(name) {
+  //    this.name = name;
+  //    console.log(this);
+  //
+  //  }
+  //  People.prototype.sayHi = function () {
+  //    console.log("我是sayHi方法");
+  //  };
+  //
+  //  //让Man构造函数继承自People
+  //  function Man(name,age) {
+  //    People.call(this,name);
+  //    this.age = age;
+  //  }
+  //  Man.prototype.sayHello = function () {
+  //    console.log("我是sayHello");
+  //  }
+  //
+  //  var m1 = new Man("张三",27);
+  //  var m2 = new Man("李四",18);
+  //  console.log(m1,m2);
+  //  m1.sayHi();
+  
+  //call的继承方式的好处：可以给继承的属性进行传参
+  //原型对象中的属性无法进行继承
+  
+  
+  //3.3 组合继承方式
+  //将多种其他的继承方式一起使用
+  
+  //将原型继承的方式和call的继承方式进行结合，取两种方式的优点
+  //  function People(name, sex) {
+  //    this.name = name;
+  //    this.sex = sex;
+  //  }
+  //  People.prototype.sayHi = function () {
+  //    console.log("我是sayHi方法");
+  //  };
+  //
+  //  function Man(name, age, sex) {
+  //    People.call(this, name, sex);
+  //    this.age = age;
+  //  }
+  //  Man.prototype = new People("张三");//此参数可传可不传，传了也没用
+  //  Man.prototype.sayHello = function () {
+  //    console.log("我是sayHello");
+  //  }
+  //  var m1 = new Man("张三", 18, "男");
+  //  console.log(m1.name);
+  //  console.log(m1.age);
+  //  console.log(m1.sex);
+  //  m1.sayHello();
+  //  m1.sayHi();
+  //
+  
+  
+  //4 函数的相关问题
+  //4.1 函数的声明方式：
+  //函数声明语句  function fun(){}
+  //函数表达式   var fun = function(){};
+  //  var fun = function () {
+  //
+  //  }
+  //  console.dir(fun);
+  //构造函数创建    var fun = new Function();
+  //var fun = new Function("x", "y","return x + y;");
+  //书写起来比較麻烦，所以不使用，认识形式即可。
+  
+  
+  //4.2 调用方式
+  //基本方式  函数名();
+  //函数名.call()  call - 调用
+  var fun = function (a, b, c) {
+    console.log("我是fun的代码", this, a, b, c);
+    
+  }
+  fun(1, 2, 3);
+  fun.call(null, 1, 2, 3);
+  fun.call({name: "张三"}, 1, 2, 3);
+  
+  
+  //函数名.apply()    apply - 调用
+  
+  fun.apply();
+  fun.apply(null, [1, 2, 3]);
+  fun.apply({age: 18}, [1, 2, 3])
+  
+  //call和apply在不传参数时和参数1传null时，跟普通调用没有区别
+  //如果参数1传入对象，可以更改函数内this的指向
+  
+  
+  //    function People(name) {
+  //      this.name = name;
+  //    }
+  //    People.prototype.sayHi = function () {
+  //      console.log("我是sayHi方法");
+  //    };
+  //
+  //    function Man(name,age) {
+  //      //People.call(this,name);
+  //      People.apply(this,[name]);
+  //      this.age = age;
+  //    }
+  //    Man.prototype = new People("张三");//使用当前构造函数的原型属性，保存People的实例对象
+  //    Man.prototype.sayHello = function () {
+  //      console.log("我是sayHello");
+  //    }
+
+
+</script>
+</body>
+</html>

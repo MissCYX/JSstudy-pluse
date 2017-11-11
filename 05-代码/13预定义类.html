@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //预定义：预先设置的功能
+  
+  // \转义符
+  // \d 可以匹配数字字符  digit
+  //var reg = /d/;
+  //console.log(reg.test("uiyduyiu"));// true
+  //
+  //var reg2 = /\d/;//当某个字符加了\以后，就不在表示字符的本意了
+  ////console.log(reg2.test("dddddddddddd"));
+  //console.log(reg2.test("23467890"));
+  //console.log(reg2.test("adwd1adwadadw"));
+  //console.log(reg2.test("adwdadwa6dadw"));
+  
+  // \D 表示 \d的反向  非数字字符
+  //var reg = /\D/;
+  //console.log(reg.test("34567"));
+  //console.log(reg.test("345a67"));
+  //console.log(reg.test("345-67"));
+  
+  //  \w  匹配所有单词字符：大写字母 小写字母 数字 _
+  //  一般用于匹配非特殊字符
+  //var reg = /\w/;
+  //console.log(reg.test("a"));//true
+  //console.log(reg.test("G"));//true
+  //console.log(reg.test("1"));//true
+  //console.log(reg.test("_"));//true
+  //console.log(reg.test("-"));
+  //console.log(reg.test("?"));
+  //console.log(reg.test("+"));
+  //console.log(reg.test("!"));
+  
+  // \W 表示\w的反向，可以匹配非单词字符
+  //var reg = /\W/;
+  //console.log(reg.test("qwe"));
+  //console.log(reg.test("123"));
+  //console.log(reg.test("UIO"));
+  //console.log(reg.test("____"));
+  //console.log(reg.test("+++"));
+  //console.log(reg.test("+++123"));
+  //console.log(reg.test("**"));
+  
+  // \s 可以匹配不可见字符 空格 换行 分页符 垂直制表符
+  //var reg = /\s/;
+  //console.log(reg.test("     "));
+  //console.log(reg.test("\n"));
+  
+  // \S 表示\s的反向，匹配可见字符
+  //var reg = /\S/;
+  //console.log(reg.test("erxcv6577y8uohbjn"));
+  //console.log(reg.test("     \n  \r    \t   \f"));//false
+  
+  
+  //  .  可以匹配除了\r和\n以外的字符
+  // 通常使用.来表示字符，任意的可见字符，不使用\S
+  
+  var reg = /./;
+  console.log(reg.test("abc"));//true
+  console.log(reg.test("-------"));//true
+  console.log(reg.test("1111"));//true
+  console.log(reg.test("       "));//true
+  console.log(reg.test("\f"));//true
+  
+  console.log(reg.test("\r"));//false
+  console.log(reg.test("\n"));//false
+  
+  
+  //  \r \n  在现在来说是没有任何的区别的，就是表示换行
+  //老式的打字机的功能会有所区分，但是现在的电脑中功能都是一样的了
+  //newline  新一行
+  //return  换行
+  
+  //document.write("<pre>abc\nqqq</pre>");
+  //document.write("<pre>abc\rqqq</pre>");
+
+</script>
+
+</body>
+</html>

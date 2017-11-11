@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //构造函数
+  function People(name) {
+    this.name = name;
+  }
+  
+  // People.prototype是原型对象，我们通过赋值的方式将prototype中原有的原型对象替换为了另一个新的原型对象
+  // 修改后，新的原型对象中设置的属性也是可以被实例对象访问的，
+  // 但是原来的原型对象中的属性在这个新的原型对象中可能不存在了，例如constructor
+  // 我们可以通过自己设置的方式进行补全。
+
+  People.prototype = {
+    //设置一些属性
+    age: 18,
+    chi: function () {
+      console.log("我就喜欢吃")
+    },
+    constructor: People
+  };
+  People.prototype.sayHi = function () {
+    console.log("你好，我是" + this.name);
+  };
+  var p1 = new People("张三");
+  console.log(p1);
+  
+  
+  //总结： 一个构造函数的原型对象是可以修改的，并且可以设置为任意一个对象
+  //     修改后的功能跟以前没有区别
+
+
+</script>
+</body>
+</html>

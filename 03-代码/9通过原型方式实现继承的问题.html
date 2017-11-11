@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //Person构造函数
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  Person.prototype.sayHi = function () {
+    console.log("我是人");
+  };
+  
+  
+  //男人
+  function Man(huZi, hasHouJie) {
+    //男人独有的属性
+    this.huZi = huZi;
+    this.hasHouJie = hasHouJie;
+  }
+  
+  //继承自Person
+  Man.prototype = new Person("赵六", 66);
+  Man.prototype.shangCeSuo = function () {
+    console.log("去男厕所");
+  };
+  //
+  //  //创建一个实例对象
+  //  var laoTou = new Man("长着呢", true);
+  //  console.log(laoTou);
+  
+  
+  //男人分为老男人 ，小鲜肉
+  //创建一个小鲜肉的构造函数
+  function XiaoXianRou(xiangMao) {
+    this.xiangMao = xiangMao;
+    this.ganJing = "非常干净的很嫩的高富帅";
+  }
+  
+  //小鲜肉继承自Man构造函数
+  XiaoXianRou.prototype = new Man("没有",true);
+  XiaoXianRou.prototype.aiDaBan = function () {
+    console.log("追逐时尚的潮流");
+  }
+  
+  
+  var liLei = new XiaoXianRou("巨帅");
+  console.log(liLei);
+
+  
+  var luHan = new XiaoXianRou("巨帅，比李雷差一丢丢");
+  console.log(luHan);
+  
+  //使用原型的方式进行继承时：
+  //好处：所有的属性和方法均可以进行继承
+  //缺点：如果继承了属性，属性的值无法进行后期的修改
+
+  
+  
+</script>
+</body>
+</html>

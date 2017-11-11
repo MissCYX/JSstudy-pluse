@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  
+  //每个函数都有一个属性prototype，用于给构造函数中创建的实例对象进行数据保存使用的
+  function People(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  //通过以下方式可以查看构造函数的prototype属性
+  //console.log(People.prototype);
+  //console.log(People);
+  //console.dir(People);
+  //我们发现构造函数都有一个属性prototype，并且值是一个对象形式
+  //这个对象属性的作用，就是用于替代我们书写的tempObj
+  
+
+  //可以使用prototype属性替换tempObj的功能
+  People.prototype.sayHi = function () {
+    console.log("你好，我是" + this.name);
+  };
+  
+  People.prototype.eat = function () {
+    console.log("我吃了好多馒头");
+  };
+  
+  var p1 = new People("张三",18);
+  var p2 = new People("jack",28);
+  
+  p1.sayHi()
+  p2.sayHi()
+
+  console.log(p1.sayHi == p2.sayHi);
+
+
+  //  //可以使用命名函数的方式节省占用的空间，但是命名函数的书写个数可能会很多，占用了命名
+//  var tempObj = {
+//    sayHi: function () {
+//      console.log("你好，我是" + this.name);
+//    },
+//    eat: function () {
+//      console.log("我吃了好多馒头");
+//    }
+//  };
+
+  
+  
+</script>
+</body>
+</html>

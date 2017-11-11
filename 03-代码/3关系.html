@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //构造函数
+  function Create() {
+    this.name = "张三";
+  }
+  
+  Create.prototype.sayHi = function () {
+    console.log("你好，我是张三");
+  };
+  Create.prototype.chi = function () {
+    console.log("我就喜欢吃");
+  };
+  
+  //实例对象
+  var c1 = new Create();
+  
+  
+  console.dir(c1);
+  console.dir(Create);
+  
+  //实例对象都有__proto__属性
+  //构造函数都有prototype属性
+  //实例对象的__proto__和构造函数的prototype是同一个对象
+  //console.log(c1.__proto__ === Create.prototype);
+  
+  //实例对象和构造函数的原型属性中都具有一个属性constructor，这个属性指向了构造函数
+  console.log(c1.__proto__.constructor === Create);
+
+  //由于对象在访问属性时会自动检索__proto__属性中的内容，所有我们在书写时不需要写__proto__
+  console.log(c1.constructor === Create);
+
+</script>
+</body>
+</html>

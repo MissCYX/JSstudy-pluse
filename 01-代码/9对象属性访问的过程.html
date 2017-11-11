@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //this只能在方法中使用才有意义
+  function DongWu(name, sex) {
+    this.name = name;
+    this.sex = sex;
+  }
+  
+  DongWu.prototype.eat = function () {
+    console.log("他喜欢吃食物");
+  };
+  DongWu.prototype.sayHi = function () {
+    console.log("猫咪向你招了招手");
+  }
+  
+  //猫
+  //我们发现实例对象可以访问构造函数的原型对象中的属性
+  //我们基本的理解是一个对象可以使用某个属性，意味着这个对象内部一定存在这个属性
+  //但是我发现实例对象cat中并没有eat属性
+  //发现实例对象具有一个__proto__属性，也是一个对象，并且具有构造函数的原型对象中添加的属性
+  //思考，是不是构造函数的prototype和实例对象的__proto__有一些关系呢？
+  //猜测，两个对象实际上就是同一个对象，只是名字不同
+  
+  
+  var cat = new DongWu("猫咪", "公");
+  console.log(cat);
+  
+  //console.log(DongWu.prototype == cat.__proto__);
+  
+  //当我们访问一个对象的属性时，首先会查找当前对象自身的属性
+  //如果没有找到，会查找实例对象的__proto__，实际上就是查找构造函数的prototype
+
+  //这种查找方式称为原型链（现在还只是基本的使用）
+  cat.eat = function () {
+    console.log("这是实例对象cat自身的eat方法");
+  };
+  cat.eat();
+</script>
+</body>
+</html>

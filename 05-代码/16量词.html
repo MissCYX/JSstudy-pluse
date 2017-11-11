@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //量词：当我们需要匹配的内容出现重复时可以使用量词的方式简化
+  
+  //自定义量词方式1：
+  //使用{}标识，内部书写一个数值，表示前面的字符可以出现多少次
+  //var reg = /^a{10}$/;
+  //console.log(reg.test("aaaaaaaaaa"));//这是10次
+  //console.log(reg.test("aaa"));//3个a
+  //console.log(reg.test("aaaaaaaaaaaaaaa"));//15个a
+  
+  //方式2：  {n,}  出现的次数可以是至少n次
+  //var reg = /^a{5,}$/;//至少出现5次
+  //console.log(reg.test("aaa"));//false
+  //console.log(reg.test("aaaa"));//false
+  //console.log(reg.test("aaaaa"));//true
+  //console.log(reg.test("aaaaaaaaaaaa"));//true
+  
+  //方式3： {n,m} 出现次数在n-m之间
+  //var reg = /^a{3,5}$/;
+  //console.log(reg.test("aa"));//false
+  //console.log(reg.test("aaa"));//true
+  //console.log(reg.test("aaaa"));//true
+  //console.log(reg.test("aaaaa"));//true
+  //console.log(reg.test("aaaaaa"));//false
+  //console.log(reg.test("aaaaaaaaaa"));//false
+  
+  //预定义量词：
+  // * 可以出现的次数为 0-n次
+  //var reg = /^a*$/;
+  //console.log(reg.test(""));//true
+  //console.log(reg.test("a"));//true
+  //console.log(reg.test("aa"));//true
+  //console.log(reg.test("aaaaaa"));//true
+  //console.log(reg.test("aaaaaaaaaa"));//true
+  
+  //使用场景，要匹配的内容中有某个部分可有可无，就可以使用*
+  //匹配邮箱：
+  //用户名@域名.com
+  //qqqqqqq@qq.com
+  //qqqqqqq@qq.com.cn
+  // /\w+@\w+\.\w+(\.\w+)*/
+  
+  // + 可以出现的次数为 1-n次   出现次数至少一次
+  //var reg = /^a+$/;
+  //console.log(reg.test(""));//false
+  //console.log(reg.test("a"));//true
+  //console.log(reg.test("aa"));//true
+  //console.log(reg.test("aaaaaa"));//true
+  //console.log(reg.test("aaaaaaaaaa"));//true
+  
+  //某个部分至少需要出现一次
+  // /\w+@\w+(\.\w+)+/
+  
+  // ? 可以出现的次数为 0次或1次
+  var reg = /^a?$/;
+  console.log(reg.test(""));//true
+  console.log(reg.test("a"));//true
+  console.log(reg.test("aa"));//false
+
+
+</script>
+
+</body>
+</html>

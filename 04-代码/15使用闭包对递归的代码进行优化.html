@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  
+  //
+  //  function fun() {
+  //    return 200;
+  //  }
+  //  fun();
+  //
+  //  var result = (function () {
+  //    return 100;
+  //  })();
+  //  console.log(result);
+  
+  
+  //使用了fun接受的是一个可以对闭包进行访问的函数
+  var fun = (function () {
+    var obj = {};//用于保存计算过的数据,私有变量
+    
+    return function (n) {
+      if (obj[n]) {//将n作为属性名，看看有没有对应的值
+        //说明当前n这个位置的值已经计算过了，直接返回
+        return obj[n];
+      } else {
+        //正常计算
+        //由于将递归函数设置为了匿名的形式，所以可以使用arguments.callee获取对当前函数的引用
+        return (n == 2 || n == 1) ? 1 : (obj[n] = arguments.callee(n - 1) + arguments.callee(n - 2));
+      }
+    }
+  })();
+  
+  console.log(fun(12));
+  console.log(fun(1400));
+
+
+</script>
+</body>
+</html>

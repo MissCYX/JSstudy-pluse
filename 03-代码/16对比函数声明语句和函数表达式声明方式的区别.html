@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //函数声明语句与函数表达式的区别：
+  //1 在预解析阶段参与的提升方式不同，导致可调用的位置不同
+  
+  //函数声明语句在声明前后均可调用。
+  //fun();
+  //function fun() {
+  //  console.log("我是fun");
+  //}
+  //fun();
+  
+  //函数表达式只能在声明之后调用
+  //fun1//undefined，无法调用。
+  //var fun1 = function () {
+  //  console.log("我是fun1");
+  //}
+  
+  
+  //2 执行代码时，根据使用的方式不同，可能会出现不同的效果
+  //使用函数声明语句声明：
+  //    if (true) {
+  //      function fun() {
+  //        console.log("我是第一段功能");
+  //      }
+  //    } else {
+  //      function fun() {
+  //        console.log("我是第二段功能");
+  //      }
+  //    }
+  //当我们执行上面这段代码时，无法确定到底可以执行哪段代码。ie中的结果与其他的浏览器中的结果不一样
+  //由于不同浏览器中对预解析的处理方式不同，导致了出现不同的fun值，不好使
+  //  fun();
+  
+  //使用函数表达式声明：
+  var fun;
+  if (false) {
+    fun = function () {
+      console.log("我是第一段功能");
+    }
+  } else {
+    fun = function () {
+      console.log("我是第二段功能");
+    }
+  }
+  fun();
+  
+  //结论，如果在if中需要书写函数的声明代码，必须使用函数表达式的形式。
+  
+  //在我们编程时，无论什么情况都更加推荐使用函数表达式的形式(为了语法规范)
+
+
+</script>
+</body>
+</html>

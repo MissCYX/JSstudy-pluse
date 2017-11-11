@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //对象的创建方式：
+  //1 对象字面量
+  //  var zhangSan = {
+  //    name: "张三",
+  //    age: 18
+  //  };
+  //实例对象
+  //  var liSi = {
+  //    name: "李四",
+  //    age: 23
+  //  };
+  
+  //2 使用函数的方式进行对象创建 (工厂模式创建)
+  //  function createPeople(name, age, gender) {
+  //    var obj = new Object();
+  //    obj.name = name;
+  //    obj.age = age;
+  //    obj.gender = gender;
+  //    obj.sayHi = function () {
+  //      console.log("你好，我是"+this.name);
+  //    };
+  //    return obj;
+  //  }
+  
+  //3 构造函数创建方式（实际上是改进后的工厂模式）
+  function People(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.sayHi = function () {
+      console.log("你好，我是" + this.name);
+    }
+  }
+  
+  //实例对象
+  var p1 = new People("张三", 18, "男");
+  var p2 = new People("张三", 18, "男");
+  var p3 = new People("张三", 18, "男");
+
+
+  //console.log(People);
+  //console.log(p1);
+  //console.log(p2);
+  //p1和p2 都是对象，但是不是一个对象
+  //console.log(p1 == p2);
+
+  console.log(p1.sayHi == p2.sayHi);
+
+  
+  //通过观察我们发现，构造函数的写法虽然简便，但是有一些问题:空间占用多
+
+</script>
+</body>
+</html>

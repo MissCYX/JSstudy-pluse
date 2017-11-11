@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  // | 表示某些字符或另一些字符
+  
+  //某位字符是a或b或c都可以
+  //var reg = /a|b|c/;
+
+  //console.log(reg.test("turuiayio"));
+  //console.log(reg.test("turuibyio"));
+  //console.log(reg.test("turuicyio"));
+  //console.log(reg.test("turuiyio"));
+  
+  //含有字符是ab或bc或cd或ef都可以
+  var reg = /ab|bc|cd|ef/;
+  console.log(reg.test("ppppppabppppp"));
+  console.log(reg.test("ppppppbcppppp"));
+  console.log(reg.test("ppppppcdppppp"));
+  console.log(reg.test("ppppefppppp"));
+  
+  //结论，字符类的使用与或者的使用比較相似，但是使用的场景不同
+  //单个字符检测时推荐使用字符类，多个字符使用或者。
+  
+  
+  
+</script>
+
+</body>
+</html>

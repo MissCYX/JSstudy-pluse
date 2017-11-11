@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 200px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<button id="btn">按钮</button>
+<div id="box"></div>
+
+<script>
+  //面向过程的书写方式：
+  //点击按钮，修改box的背景色
+  //  var box = id("box");
+  //  var btn = id("btn");
+  //  btn.onclick = function () {
+  //    box.style.backgroundColor = "red";
+  //  };
+  
+  var box=document.getElementById("box");
+  var btn=document.getElementById("btn");
+  btn.onclick=function(){
+    box.style.backgroundColor="red";
+  }
+
+
+
+
+
+
+
+
+  function id(idName) {
+    return document.getElementById(idName);
+  }
+  
+  
+  //使用面向对象的方式进行编程
+  function ChangeStyle(btnId, boxId, color) {
+    this.btn = id(btnId);//用于保存需要进行操作的按钮
+    this.box = id(boxId);//用于保存被操作的标签
+    this.color = color;
+  }
+  
+  //原型对象中的方法中的this和构造函数中的this指向相同
+  ChangeStyle.prototype.bgColor = function () {
+    //我们发现有时候this的指向会变，可能会取不到我们需要的this的值，通过变量缓存的方式即可解决
+    var that = this;
+    //点击设置的按钮，对需要进行操作的标签进行背景色修改
+    this.btn.onclick = function () {
+      //设置box的背景色
+      that.box.style.backgroundColor = that.color;
+    };
+  };
+  
+  var c1 = new ChangeStyle("btn", "box", "red");
+  c1.bgColor();
+
+
+</script>
+</body>
+</html>

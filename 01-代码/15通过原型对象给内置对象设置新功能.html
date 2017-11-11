@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+
+<script>
+  //  var arr = new Array();
+  //Array就是一个构造函数
+  
+  //  Array.prototype.sayHi = function () {
+  //    console.log("你好，我是一个数组");
+  //  };
+  //  
+  //  
+  //  
+  //  给数组添加自定义方法
+  
+  Array.prototype.paiXu = function () {
+    // var arr = this;
+    //外层循环、
+    for (var i = 0; i < this.length - 1; i++) {
+      //内层循环
+      for (var j = 0; j < this.length - 1 - i; j++) {
+        if (this[j] > this[j + 1]) {
+          var temp = this[j];
+          this[j] = this[j + 1];
+          this[j + 1] = temp;
+        }
+      }
+    }
+  };
+  
+  var arr = new Array(11, 1, 2, 3);
+  //调用我们自己给Array设置的方法
+  arr.paiXu();
+  console.log(arr);
+  
+  var arr3 = [7, 6, 5];
+  arr3.paiXu();
+  console.log(arr3);
+  
+  
+  //此种写法在过去的一段时间中是主流写法，但是现在几乎不使用了。
+  //会出现性能问题,内置对象中的属性方法越多，访问数据时消耗的性能越高。不推荐添加大量的方法。
+  
+  var arr4 = [1, 2, 3];
+  arr4.push();
+
+
+</script>
+
+</body>
+</html>
