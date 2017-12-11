@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>快速排序</title>
+</head>
+<body>
+
+</body>
+<script>
+    var arr = [1,4,66,89,34,78,15,37,56];
+     /**快速排序，选取基准值（选中间值），小于基准值放左边，大于基准值放右边，重复执行，进行数组拼接
+       * [if description]
+       * @param  {Number} arr.lenght <             [description]
+       * @return {[type]}            [description]
+       */
+    var quicksort = function(arr){
+      // 设置递归的返回条件
+      if(arr.length <= 1) {return console.log(arr)};
+
+      var pivotIndex = Math.floor(arr.length/2);
+      var pivot = arr.splice(pivotIndex,1)[0];
+      // 定义两个空数组，用于存放左右两边的数
+      var left = [];
+      var right = [];
+      for(var i = 0; i<arr.length; i++){
+        if(arr[i] < pivot){
+          left.push(arr[i])
+        } else {
+          right.push(arr[i])
+        }
+      }
+      // 采用递归重复执行
+      return quicksort(left).concat([pivot],quicksort(right))
+    };
+    quicksort(arr);
+</script>
+</html>
